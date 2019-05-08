@@ -65,5 +65,14 @@ namespace TestProject1
             Assert.False(result.Contains("Fizz") || result.Contains("Buzz"));
         }
         
+        [Fact]
+        public void when_number_is_illegal_return_error()
+        {
+            var printer = new CustomPrint();
+            Assert.Equal("error", printer.GetValue(0));
+            Assert.Equal("error", printer.GetValue(-1));
+            Assert.Equal("error", printer.GetValue(101));
+        }
+        
     }
 }
