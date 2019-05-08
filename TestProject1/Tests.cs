@@ -54,5 +54,15 @@ namespace TestProject1
             Assert.Equal("FizzBuzz", printer.GetValue(15));
             Assert.NotEqual("FizzBuzz", printer.GetValue(20));
         }
+        
+        [Fact]
+        public void when_number_is_not_times_of_3_or_5_return_number_itself()
+        {
+            var printer = new CustomPrint();
+            var result = printer.GetValue(7);
+            Assert.Equal("7", result);
+            Assert.False(result.Contains("Fizz") || result.Contains("Buzz"));
+        }
+        
     }
 }
