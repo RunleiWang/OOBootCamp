@@ -30,5 +30,13 @@ namespace TestProject1
             Assert.Equal("Fizz", printer.GetValue(3));
             Assert.NotEqual("Fizz", printer.GetValue(4));
         }
+
+        [Fact]
+        public void when_number_is_times_of_5_return_Buzz()
+        {
+            var printer = new CustomPrint();
+            Assert.Equal("Buzz", printer.GetValue(10));
+            Assert.NotEqual("Buzz", printer.GetValue(9));
+        }
     }
 }
