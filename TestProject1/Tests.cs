@@ -20,7 +20,8 @@ namespace TestProject1
             {
                 return "Buzz";
             }
-            return String.Empty;
+
+            return num.ToString();
         }
 
         public void Print(int input)
