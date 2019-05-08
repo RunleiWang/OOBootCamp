@@ -8,6 +8,10 @@ namespace TestProject1
     {
         public string GetValue(int num)
         {
+            if (num < 1 || num > 100)
+            {
+                return "error";
+            }
             if (num % 15 == 0)
             {
                 return "FizzBuzz";
