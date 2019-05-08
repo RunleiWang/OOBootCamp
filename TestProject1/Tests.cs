@@ -12,6 +12,11 @@ namespace TestProject1
             {
                 return "Fizz";
             }
+
+            if (num % 5 == 0)
+            {
+                return "Buzz";
+            }
             return String.Empty;
         }
 
