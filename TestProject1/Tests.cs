@@ -8,6 +8,10 @@ namespace TestProject1
     {
         public string GetValue(int num)
         {
+            if (num % 3 == 0)
+            {
+                return "Fizz";
+            }
             return String.Empty;
         }
 
