@@ -76,6 +76,11 @@ namespace TestProject1
         
         public Car Take(Ticket ticket)
         {
+            if (ticket == null)
+            {
+                throw new UnavailableTicketException();
+            }
+            
             foreach (var parkingLot in WorkedParkingLots)
             {
                 var car = parkingLot.Take(ticket);
@@ -221,7 +226,30 @@ namespace TestProject1
             Assert.NotNull(returnedCar);
             Assert.Equal(car.Lisence, returnedCar.Lisence);       
         }
-        
-        
+
+        [Fact]
+        void should_not_parking_boy_take_the_car_given_parking_boy_work_in_parking_lot_when_user_take_car_with_invalid_ticket()
+        {
+            var car = new Car("lisence not exist");
+            var invalidTicket = new Ticket(car.Lisence);
+            var parkingLot = new ParkingLot(true);
+            var parkingBoy = new ParkingBoy(new List<ParkingLot>
+            {
+                parkingLot
+            });
+            Assert.Throw<UnavailableTicketException>(() => parkingBoy.Take(invalidTicket))
+        }
+
+        [Fact]
+        void should_not_parking_boy_take_the_car_give_user_parking_car_when_parking_boy_take_car_with_no_ticket()
+        {
+            var car = new Car("lisence");
+            var parkingLot = new ParkingLot(true);
+            var parkingBoy = new ParkingBoy(new List<ParkingLot>
+            {
+                parkingLot
+            });
+            Assert.Throw(UnavailableTicketException)(() => parkingBoy.Take());
+        }
     }
 }                     
